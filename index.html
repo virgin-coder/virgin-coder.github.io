@@ -146,6 +146,41 @@
     }
     .skill-tag:hover{background:rgba(108,99,255,.25);transform:translateY(-2px);box-shadow:0 4px 16px rgba(108,99,255,.15)}
 
+    /* ── CONCEPTS FROM ── */
+    .concepts-grid{
+      max-width:900px;margin:0 auto;
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:24px;
+    }
+    .concept-card{
+      background:var(--card);border-radius:var(--radius);padding:28px 30px;
+      border:1px solid rgba(108,99,255,.1);transition:transform .3s,box-shadow .3s;
+      display:flex;gap:20px;align-items:flex-start;text-decoration:none;color:inherit;
+    }
+    .concept-card:hover{transform:translateY(-4px);box-shadow:0 10px 40px rgba(108,99,255,.12)}
+    .concept-icon{
+      width:56px;height:56px;border-radius:14px;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+    }
+    .concept-icon.book{background:rgba(108,99,255,.15)}
+    .concept-icon.video{background:rgba(255,101,132,.12)}
+    .concept-icon.cert{background:rgba(74,222,128,.12)}
+    .concept-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px}
+    .concept-card .concept-author{color:var(--accent);font-size:.85rem;font-weight:600;margin-bottom:6px}
+    .concept-card .concept-type{
+      display:inline-block;font-size:.7rem;padding:3px 12px;border-radius:50px;
+      font-weight:600;text-transform:uppercase;letter-spacing:.5px;
+    }
+    .concept-type.t-book{background:rgba(108,99,255,.15);color:#a5a0ff}
+    .concept-type.t-playlist{background:rgba(255,101,132,.12);color:#ff6584}
+    .concept-type.t-cert{background:rgba(74,222,128,.12);color:#4ade80}
+    .concept-card .concept-topics{
+      display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;
+    }
+    .concept-card .concept-topic{
+      font-size:.72rem;padding:3px 10px;border-radius:50px;
+      background:rgba(255,255,255,.05);color:var(--muted);
+    }
+
     /* ── EDUCATION ── */
     .edu-cards{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
     .edu-card{
@@ -356,6 +391,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#concepts">Learning</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#codeforces">Codeforces</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -519,8 +555,50 @@
   </div>
 </section>
 
+<!-- CONCEPTS FROM -->
+<section id="concepts" style="background:var(--surface)">
+  <h2 class="section-title fade-up">Can Apply Concepts From</h2>
+  <div class="concepts-grid">
+    <a href="https://www.amazon.in/System-Design-Interview-Insiders-Colour/dp/9355427190" target="_blank" rel="noopener" class="concept-card fade-up">
+      <div class="concept-icon book">&#128214;</div>
+      <div>
+        <h3>System Design Interview — An Insider's Guide</h3>
+        <div class="concept-author">Alex Xu</div>
+        <span class="concept-type t-book">Book</span>
+        <div class="concept-topics">
+          <span class="concept-topic">Rate Limiter</span>
+          <span class="concept-topic">Consistent Hashing</span>
+          <span class="concept-topic">Key-Value Store</span>
+          <span class="concept-topic">URL Shortener</span>
+          <span class="concept-topic">Web Crawler</span>
+          <span class="concept-topic">Notification System</span>
+          <span class="concept-topic">News Feed</span>
+          <span class="concept-topic">Chat System</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://www.youtube.com/playlist?list=PLL8woMHwr36EDxjUoCzboZjedsnhLP1j4" target="_blank" rel="noopener" class="concept-card fade-up">
+      <div class="concept-icon video">&#9654;</div>
+      <div>
+        <h3>Java Concurrency and Multithreading</h3>
+        <div class="concept-author">YouTube Playlist</div>
+        <span class="concept-type t-playlist">Playlist</span>
+        <div class="concept-topics">
+          <span class="concept-topic">Threads</span>
+          <span class="concept-topic">Synchronization</span>
+          <span class="concept-topic">Locks</span>
+          <span class="concept-topic">Executors</span>
+          <span class="concept-topic">Concurrent Collections</span>
+          <span class="concept-topic">Deadlocks</span>
+          <span class="concept-topic">Thread Pools</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
 <!-- EDUCATION -->
-<section id="education" style="background:var(--surface)">
+<section id="education">
   <h2 class="section-title fade-up">Education</h2>
   <div class="edu-cards">
     <div class="edu-card fade-up">
