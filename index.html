@@ -718,6 +718,7 @@
   <p>&copy; 2026 Abhinav Batta. Built with care.</p>
 </footer>
 
+<script src="codeforces_data.js"></script>
 <script>
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -737,16 +738,11 @@
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
   // ── Codeforces ──
-  let cfData = null;
+  let cfData = CF_DATA;
   let currentFilter = 'all';
 
-  fetch('codeforces_data.json')
-    .then(r => r.json())
-    .then(data => { cfData = data; renderCfStats(); renderCfGrid(); })
-    .catch(() => {
-      document.getElementById('cfGrid').innerHTML =
-        '<p style="text-align:center;color:var(--muted)">Could not load Codeforces data.</p>';
-    });
+  renderCfStats();
+  renderCfGrid();
 
   function renderCfStats() {
     const s = cfData.stats;
