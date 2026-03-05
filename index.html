@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'">
   <title>Abhinav Batta — Senior Software Engineer</title>
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -559,7 +560,7 @@
 <section id="concepts" style="background:var(--surface)">
   <h2 class="section-title fade-up">Can Apply Concepts From</h2>
   <div class="concepts-grid">
-    <a href="https://www.amazon.in/System-Design-Interview-Insiders-Colour/dp/9355427190" target="_blank" rel="noopener" class="concept-card fade-up">
+    <a href="https://www.amazon.in/System-Design-Interview-Insiders-Colour/dp/9355427190" target="_blank" rel="noopener noreferrer" class="concept-card fade-up">
       <div class="concept-icon book">&#128214;</div>
       <div>
         <h3>System Design Interview — An Insider's Guide</h3>
@@ -577,7 +578,7 @@
         </div>
       </div>
     </a>
-    <a href="https://www.youtube.com/playlist?list=PLL8woMHwr36EDxjUoCzboZjedsnhLP1j4" target="_blank" rel="noopener" class="concept-card fade-up">
+    <a href="https://www.youtube.com/playlist?list=PLL8woMHwr36EDxjUoCzboZjedsnhLP1j4" target="_blank" rel="noopener noreferrer" class="concept-card fade-up">
       <div class="concept-icon video">&#9654;</div>
       <div>
         <h3>Java Concurrency and Multithreading</h3>
@@ -591,6 +592,24 @@
           <span class="concept-topic">Concurrent Collections</span>
           <span class="concept-topic">Deadlocks</span>
           <span class="concept-topic">Thread Pools</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://sqlbolt.com/" target="_blank" rel="noopener noreferrer" class="concept-card fade-up">
+      <div class="concept-icon cert">&#128202;</div>
+      <div>
+        <h3>SQLBolt — Learn SQL with Interactive Exercises</h3>
+        <div class="concept-author">SQLBolt</div>
+        <span class="concept-type t-cert">Interactive Course</span>
+        <div class="concept-topics">
+          <span class="concept-topic">SELECT Queries</span>
+          <span class="concept-topic">Filtering</span>
+          <span class="concept-topic">JOINs</span>
+          <span class="concept-topic">Aggregations</span>
+          <span class="concept-topic">Subqueries</span>
+          <span class="concept-topic">INSERT / UPDATE / DELETE</span>
+          <span class="concept-topic">CREATE TABLE</span>
+          <span class="concept-topic">ALTER / DROP</span>
         </div>
       </div>
     </a>
@@ -706,7 +725,7 @@
       <span class="c-label">Phone</span>
       <span class="c-value">+91 6280827546</span>
     </a>
-    <a href="https://gitlab.com/abbatta7" target="_blank" rel="noopener" class="contact-card">
+    <a href="https://gitlab.com/abbatta7" target="_blank" rel="noopener noreferrer" class="contact-card">
       <span class="c-icon">&#128736;</span>
       <span class="c-label">GitLab</span>
       <span class="c-value">abbatta7</span>
@@ -720,6 +739,12 @@
 
 <script src="codeforces_data.js"></script>
 <script>
+  function esc(s) {
+    const d = document.createElement('div');
+    d.textContent = String(s);
+    return d.innerHTML;
+  }
+
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
@@ -747,10 +772,10 @@
   function renderCfStats() {
     const s = cfData.stats;
     document.getElementById('cfStats').innerHTML = `
-      <div class="cf-stat"><span class="num total">${s.totalDiv34}</span><span class="lbl">Total Contests</span></div>
-      <div class="cf-stat"><span class="num green">${s.fullySolved}</span><span class="lbl">Fully Solved</span></div>
-      <div class="cf-stat"><span class="num yellow">${s.partiallySolved}</span><span class="lbl">Partially Solved</span></div>
-      <div class="cf-stat"><span class="num gray">${s.notAttempted}</span><span class="lbl">Not Attempted</span></div>
+      <div class="cf-stat"><span class="num total">${esc(s.totalDiv34)}</span><span class="lbl">Total Contests</span></div>
+      <div class="cf-stat"><span class="num green">${esc(s.fullySolved)}</span><span class="lbl">Fully Solved</span></div>
+      <div class="cf-stat"><span class="num yellow">${esc(s.partiallySolved)}</span><span class="lbl">Partially Solved</span></div>
+      <div class="cf-stat"><span class="num gray">${esc(s.notAttempted)}</span><span class="lbl">Not Attempted</span></div>
     `;
   }
 
@@ -784,9 +809,9 @@
       const total = c.problems.length;
       const solved = c.solvedProblems.length;
       return `<div class="cf-block ${cls}" data-idx="${cfData.contests.indexOf(c)}">
-        <div class="cf-name">${shortName}</div>
+        <div class="cf-name">${esc(shortName)}</div>
         <div class="cf-meta">
-          <span class="cf-div-tag">${c.div}</span>
+          <span class="cf-div-tag">${esc(c.div)}</span>
           <span class="cf-progress">${solved}/${total}</span>
         </div>
       </div>`;
@@ -816,13 +841,13 @@
       const isSolved = solvedSet.has(p.index);
       const url = `https://codeforces.com/contest/${c.id}/problem/${p.index}`;
       return `<div class="cf-problem-row ${isSolved ? 'p-solved' : ''}">
-        <span class="p-index">${p.index}</span>
-        <span class="p-name"><a href="${url}" target="_blank" rel="noopener">${p.name}</a></span>
-        <span class="p-rating">${p.rating || '—'}</span>
+        <span class="p-index">${esc(p.index)}</span>
+        <span class="p-name"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(p.name)}</a></span>
+        <span class="p-rating">${p.rating ? esc(p.rating) : '—'}</span>
         <span class="p-status">${isSolved ? '&#10003;' : '&#8226;'}</span>
       </div>`;
     }).join('');
-    html += `<a class="cf-contest-link" href="https://codeforces.com/contest/${c.id}" target="_blank" rel="noopener">View full contest on Codeforces &rarr;</a>`;
+    html += `<a class="cf-contest-link" href="https://codeforces.com/contest/${esc(c.id)}" target="_blank" rel="noopener noreferrer">View full contest on Codeforces &rarr;</a>`;
     document.getElementById('cfModalBody').innerHTML = html;
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
